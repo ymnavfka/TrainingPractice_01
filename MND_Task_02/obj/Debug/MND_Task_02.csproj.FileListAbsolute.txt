@@ -1,0 +1,7 @@
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_02\bin\Debug\MND_Task_02.exe.config
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_02\bin\Debug\MND_Task_02.exe
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_02\bin\Debug\MND_Task_02.pdb
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_02\obj\Debug\MND_Task_02.csprojAssemblyReference.cache
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_02\obj\Debug\MND_Task_02.csproj.CoreCompileInputs.cache
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_02\obj\Debug\MND_Task_02.exe
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_02\obj\Debug\MND_Task_02.pdb
