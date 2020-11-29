@@ -6,7 +6,6 @@ namespace MND_Task_04
     {
         static void Main(string[] args)
         {
-        {
             Random rnd = new Random();
 
             int bossHealth = 666;
@@ -120,8 +119,8 @@ namespace MND_Task_04
                             if (!isSmokeScreenUsed)
                             {
                                 Console.WriteLine("The enemy raged and struck you a series of hits." +
-                                                  "\nYou lose 100 HP.");
-                                playerHealth -= 60;
+                                                  "\nYou lose 80 HP.");
+                                playerHealth -= 80;
                             }
                             else
                             {
