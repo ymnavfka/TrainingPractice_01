@@ -37,7 +37,7 @@ namespace MND_Task_04
                               "\n1. Normal attack - you just hit the monster with a normal hit. " +
                               "\n2. Smoke Screen - You throw a smoke bomb that prevents the monster from using abilities. " +
                               "\n3. Blink Strike - You teleport behind the monster and make a stab in the back. Can be combined with the Cloak and Dagger ability." +
-                              "\n4. Healing - You restore yourself 100 HP." +
+                              "\n4. Healing - You restore yourself 30 HP." +
                               "\n5. Cloak and Dagger - You upgrade your backstabbing skills and increase the damage to the monster in the back by 2 times.");
 
             Console.WriteLine("\nHit any button if you ready to start...");
@@ -67,7 +67,7 @@ namespace MND_Task_04
                               "\n1. Normal attack - You just hit the monster with a normal hit." +
                               "\n2. Smoke Screen - You throw a smoke bomb that prevents the monster from using abilities." +
                               "\n3. Blink Strike - You teleport behind the monster and make a stab in the back. Can be combined with the Cloak and Dagger ability." +
-                              "\n4. Healing - You restore yourself 100 HP." +
+                              "\n4. Healing - You restore yourself 30 HP." +
                               "\n5. Cloak and Dagger - You upgrade your backstabbing skills and increase the damage to the monster in the back by 2 times.");
                             break;
                         case 1:
