@@ -78,21 +78,17 @@ namespace MND_Task_06
             int newsize = _size + 1;
 
             string[,] cloneDossier = new string[newsize, 2];
-            for (int i = 0; i < Math.Min(_size, newsize); i++)
+            for (int i = 0; i < _size; i++)
             {
                 cloneDossier[i, 0] = _dossier[i, 0];
                 cloneDossier[i, 1] = _dossier[i, 1];
             }
-            for (int i = _size; i < newsize; i++)
-            {
-                cloneDossier[i, 0] = "";
-                cloneDossier[i, 1] = "";
-            }
+            cloneDossier[_size, 0] = fio;
+            cloneDossier[_size, 1] = post;
+
             _dossier = cloneDossier;
             _size = newsize;
 
-            _dossier[_size - 1, 0] = fio;
-            _dossier[_size - 1, 1] = post;
             Console.WriteLine("\nThe dossier was successfully added!");
         }
 
@@ -158,18 +154,18 @@ namespace MND_Task_06
 
         private static void SearchDossier(string searchForSurname)
         {
-            int count = 0;
+            bool noDossierFound = true;
             for (int i = 0; i < _size; i++)
             {
                 if (_dossier[i, 0].IndexOf(searchForSurname) >= 0)
                 {
-                    Console.WriteLine($"Досье: {i + 1}) {_dossier[i, 0]} - {_dossier[i, 1]}");
-                    count++;
+                    Console.WriteLine($"Dossier: {i + 1}) {_dossier[i, 0]} - {_dossier[i, 1]}");
+                    noDossierFound = false;
                 }
             }
-            if (count == 0)
+            if (noDossierFound)
             {
-                Console.WriteLine("Досье с такой фамилий не найдено!");
+                Console.WriteLine("No dossier with that name was found!");
             }
         }
     }
