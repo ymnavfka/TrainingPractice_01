@@ -1,0 +1,7 @@
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_05\bin\Debug\MND_Task_05.exe.config
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_05\bin\Debug\MND_Task_05.exe
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_05\bin\Debug\MND_Task_05.pdb
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_05\obj\Debug\MND_Task_05.csprojAssemblyReference.cache
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_05\obj\Debug\MND_Task_05.csproj.CoreCompileInputs.cache
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_05\obj\Debug\MND_Task_05.exe
+C:\Users\monte\source\repos\TrainingPractice_01\MND_Task_05\obj\Debug\MND_Task_05.pdb
