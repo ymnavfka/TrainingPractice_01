@@ -8,7 +8,8 @@ namespace MND_Task_05
         static void Main(string[] args)
         {
             const string mapName = "levelMap";
-            char[,] map = ReadMap(mapName, out int startPointX, out int startPointY, out int endPointX, out int endPointY);
+            char[,] map = ReadMap(mapName, out int startPointX, out int startPointY,
+                                  out int endPointX, out int endPointY);
             string[] newFile = File.ReadAllLines($"maps/{mapName}.txt");
 
             DrawMap(map);
@@ -22,6 +23,7 @@ namespace MND_Task_05
             Console.Write("a - left");
             Console.SetCursorPosition(map.GetLength(1) + 5, 4);
             Console.Write("d - right");
+            Console.SetCursorPosition(map.GetLength(1) + 25, 0);
             Console.SetCursorPosition(1, 1);
             MovePlayer(map, startPointX, startPointY, endPointX, endPointY);
             Console.ReadKey();
@@ -37,7 +39,7 @@ namespace MND_Task_05
             {
                 case ConsoleKey.S:
                     nextStepY++;
-                    if (!((map[nextStepY,x] == '=') || (map[nextStepY,x] == '|')))
+                    if (!((map[nextStepY, x] == '=') || (map[nextStepY, x] == '|')))
                         y = nextStepY;
                     break;
 
@@ -49,7 +51,7 @@ namespace MND_Task_05
 
                 case ConsoleKey.D:
                     nextStepX++;
-                    if (!((map[y,nextStepX] == '=') || (map[y,nextStepX] == '|')))
+                    if (!((map[y, nextStepX] == '=') || (map[y, nextStepX] == '|')))
                         x = nextStepX;
                     break;
 
@@ -73,7 +75,8 @@ namespace MND_Task_05
             MovePlayer(map, x, y, endPointX, endPointY);
         }
 
-        static char[,] ReadMap(string mapName, out int startPointX, out int startPointY, out int endPointX, out int endPointY)
+        static char[,] ReadMap(string mapName, out int startPointX, out int startPointY,
+                               out int endPointX, out int endPointY)
         {
             startPointX = 0;
             startPointY = 0;
