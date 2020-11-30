@@ -1,136 +1,120 @@
 ﻿using System;
+using System.IO;
 
 namespace MND_Task_05
 {
     class Program
     {
-        static string[] map;
-
         static void Main(string[] args)
         {
-            int movesGive = 120;
-            const int mapSize = 20;
-            map = new string[mapSize] { "========================================",
-                                        "| |             |              =====|  |",
-                                        "|               |  |                |  |",
-                                        "| |======  == = |  |=========       |  |",
-                                        "|               |  |        | |     |  |",
-                                        "|========       |           | |     |  |",
-                                        "||      |       |======     | |     |  |",
-                                        "||      |   | |       |     | |     |  |",
-                                        "||      |   | |====         | |        |",
-                                        "||      |   | |             | |        |",
-                                        "|       |             |=======|  |===| |",
-                                        "|       |             |     | |  |   | |",
-                                        "|       |             |     | |  |===| |",
-                                        "|       |===========  |  ===|          |",
-                                        "|                  |  |  |     ===|    |",
-                                        "|                  |  |           |    |",
-                                        "|  |=   =|         |  |      |         |",
-                                        "| |=     =|        |===      |===      |",
-                                        "| |       |                            |",
-                                        "====|   |==============================="};
-            WriteArr(map);
-            Console.SetCursorPosition(45, 0);
-            Console.Write("Your task is to complete the maze in 65 moves");
-            Console.SetCursorPosition(45, 2);
+            const string mapName = "levelMap";
+            char[,] map = ReadMap(mapName, out int startPointX, out int startPointY, out int endPointX, out int endPointY);
+            string[] newFile = File.ReadAllLines($"maps/{mapName}.txt");
+
+            DrawMap(map);
+            Console.SetCursorPosition(map.GetLength(1) + 5, 0);
             Console.Write("Motion control:");
-            Console.SetCursorPosition(45, 3);
+            Console.SetCursorPosition(map.GetLength(1) + 5, 1);
             Console.Write("w - up");
-            Console.SetCursorPosition(45, 4);
+            Console.SetCursorPosition(map.GetLength(1) + 5, 2);
             Console.Write("s - down");
-            Console.SetCursorPosition(45, 5);
+            Console.SetCursorPosition(map.GetLength(1) + 5, 3);
             Console.Write("a - left");
-            Console.SetCursorPosition(45, 6);
+            Console.SetCursorPosition(map.GetLength(1) + 5, 4);
             Console.Write("d - right");
             Console.SetCursorPosition(1, 1);
-            MovePlayer(1, 1, map, movesGive);
+            MovePlayer(map, startPointX, startPointY, endPointX, endPointY);
             Console.ReadKey();
         }
 
-        static void WriteArr(string[] arr)
+        static void MovePlayer(char[,] map, int startPointX, int startPointY, int endPointX, int endPointY)
         {
-            for (int i = 0; i < arr.GetLength(0); i++, Console.WriteLine())
-                Console.Write(arr[i]);
-        }
-
-        static void MovePlayer(int x, int y, string[] map, int moves)
-        {
+            int x = startPointX;
+            int y = startPointY;
             int nextStepX = x;
             int nextStepY = y;
             switch (Console.ReadKey(true).Key)
             {
                 case ConsoleKey.S:
                     nextStepY++;
-                    if ((map[nextStepY][x] == '=') || (map[nextStepY][x] == '|'))
-                        nextStepY = y;
-                    else
-                    {
+                    if (!((map[nextStepY,x] == '=') || (map[nextStepY,x] == '|')))
                         y = nextStepY;
-                        moves--;
-                    }
-                    if (y == (map.Length - 1))
-                    {
-                        Console.SetCursorPosition(45, 2);
-                        Console.WriteLine("You have passed the maze!");
-                        Console.SetCursorPosition(x, y);
-                        return;
-                    }
                     break;
 
                 case ConsoleKey.W:
                     nextStepY--;
-                    if ((map[nextStepY][x] == '=') || (map[nextStepY][x] == '|'))
-                        nextStepY = y;
-                    else
-                    {
+                    if (!((map[nextStepY, x] == '=') || (map[nextStepY, x] == '|')))
                         y = nextStepY;
-                        moves--;
-                    }
                     break;
 
                 case ConsoleKey.D:
                     nextStepX++;
-                    if ((map[y][nextStepX] == '=') || (map[y][nextStepX] == '|'))
-                        nextStepX = x;
-                    else
-                    {
+                    if (!((map[y,nextStepX] == '=') || (map[y,nextStepX] == '|')))
                         x = nextStepX;
-                        moves--;
-                    }
                     break;
 
                 case ConsoleKey.A:
                     nextStepX--;
-                    if ((map[y][nextStepX] == '=') || (map[y][nextStepX] == '|'))
-                        nextStepX = x;
-                    else
-                    {
+                    if (!((map[y, nextStepX] == '=') || (map[y, nextStepX] == '|')))
                         x = nextStepX;
-                        moves--;
-                    }
+                    break;
+                default:
+                    MovePlayer(map, x, y, endPointX, endPointY);
                     break;
             }
-            if (moves == 0)
+            if (x == endPointX && y == endPointY)
             {
-                Console.SetCursorPosition(45, 2);
-                Console.WriteLine("You've spent all your moves :(");
-                Console.SetCursorPosition(45, 3);
+                Console.SetCursorPosition(map.GetLength(1) + 5, 7);
+                Console.WriteLine("You have passed the maze!");
+                Console.SetCursorPosition(x, y);
                 return;
             }
-            Console.SetCursorPosition(45, 0);
-            WriteInfo(moves);
             Console.SetCursorPosition(x, y);
-            MovePlayer(x, y, map, moves);
+            MovePlayer(map, x, y, endPointX, endPointY);
         }
 
-        static void WriteInfo(int moves)
+        static char[,] ReadMap(string mapName, out int startPointX, out int startPointY, out int endPointX, out int endPointY)
         {
-            Console.Clear();
-            Console.SetCursorPosition(0, 0);
-            WriteArr(map);
-            Console.SetCursorPosition(50, 0);
-            Console.WriteLine($"Moves left: {moves}");
+            startPointX = 0;
+            startPointY = 0;
+            endPointX = 0;
+            endPointY = 0;
+
+            string[] newFile = File.ReadAllLines($"maps/{mapName}.txt");
+            char[,] map = new char[newFile.Length, newFile[0].Length];
+
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int j = 0; j < map.GetLength(1); j++)
+                {
+                    map[i, j] = newFile[i][j];
+
+                    if (map[i, j] == '>')
+                    {
+                        startPointX = j;
+                        startPointY = i;
+                    }
+                    if (map[i, j] == '<')
+                    {
+                        endPointX = j;
+                        endPointY = i;
+                    }
+                }
+            }
+            return map;
+        }
+
+
+        static void DrawMap(char[,] map)
+        {
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int j = 0; j < map.GetLength(1); j++)
+                {
+                    Console.Write(map[i, j]);
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
