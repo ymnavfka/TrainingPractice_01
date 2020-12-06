@@ -23,8 +23,7 @@ namespace MND_Task_05
             Console.Write("a - left");
             Console.SetCursorPosition(map.GetLength(1) + 5, 4);
             Console.Write("d - right");
-            Console.SetCursorPosition(map.GetLength(1) + 25, 0);
-            Console.SetCursorPosition(1, 1);
+            Console.SetCursorPosition(startPointX, startPointY);
             MovePlayer(map, startPointX, startPointY, endPointX, endPointY);
             Console.ReadKey();
         }
